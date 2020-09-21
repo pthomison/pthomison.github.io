@@ -2,16 +2,21 @@
 <html class="no-js" lang="">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="vue.js"></script>
+	<script src="vue.js"></script>
 
-  <script src="routie.js"></script>
-  <script src="https://unpkg.com/marked@0.3.6"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="routie.js"></script>
+	<script src="https://unpkg.com/marked@0.3.6"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="main.css">
 
@@ -23,19 +28,17 @@
 		<h2>Patrick Thomison's Blog:</h2><h4>Distributed systems, containerization, and happy servers</h4>
 	</div>
 
-	<div id="sidebar">
-		<ul>
-			<li v-for="link in links">
+	<nav id="sidebar" class="col-3 nav flex-column">
+		<ul class="nav nav-pills">
+			<li v-for="link in links" class="nav-item">
 
-				<button v-on:click="route(link.href)">{{ link.title }}</button>
-
-				 <!-- <a v-bind:href="link.href">{{ link.title }}</a>  -->
+				 <a v-on:click="route(link.href)" v-bind:class="{ active: link.active }"class="nav-link">{{ link.title }}</a> 
 				
 			</li>
 		</ul>
-	</div>
+	</nav>
 
-	<div id="content" v-html="content">		
+	<div id="content" v-html="content" class="col-9">		
 
 	</div>
 

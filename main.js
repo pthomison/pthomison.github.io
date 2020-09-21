@@ -1,23 +1,26 @@
 var pane = {
-	links: [
-		{
+	links: {
+		"home": {
 			"title": "Home",
-			"href": "home"
+			"href": "home",
+			"active": false
 		},
-		{
+		"about-me": {
 			"title": "About Me",
-			"href": "about-me"
+			"href": "about-me",
+			"active": false
 		},
-		{
+		"about-this-site": {
 			"title": "About This Site",
-			"href": "about-this-site"
+			"href": "about-this-site",
+			"active": false
 		},
-		{
+		"posts": {
 			"title": "Posts",
-			"href": "posts"
+			"href": "posts",
+			"active": false
 		}
-	],
-	message: "This is a vue application!!!",
+	},
 	content: ""
 }
 
@@ -41,6 +44,8 @@ function loadPostFactory(url) {
 	return function() {
 		axios.get("/posts/" + url + ".md")
 		  .then(function (response) {
+		  	Object.values(pane.links).forEach(l => l.active = false)
+		  	pane.links[url].active = true
 		    pane.content = marked(response.data, { sanitize: true });
 		  })
 		  .catch(function (error) {
@@ -49,12 +54,6 @@ function loadPostFactory(url) {
 	}
 }
 
-pane.links.forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
+Object.values(pane.links).forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
 
 routie({'': loadPostFactory('home')})
-
-
-// routie({
-// 	'home': homeContent,
-// 	'about': aboutContent
-// })

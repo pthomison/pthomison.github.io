@@ -1,21 +1,23 @@
-p {
+/*p {
 	color: blue;
 }
 
 h1 {
 	color: purple;
-}
+}*/
 
 body {
 	max-width: 1200px;
 	margin: auto;
-	height: 100%;
+	height: 100vh;
 }
 
 #header {
 	min-height: 50px;
 	background-color: black;
 	color: white;
+
+	padding: 10px;
 }
 
 #header h2,h4 {
@@ -27,13 +29,12 @@ body {
 }
 
 #sidebar {
-	width: 20%;
-	min-width: 50px;
+/*	width: 20%;
+	min-width: 50px;*/
 	/*margin: auto;*/
 	float: right;
 	text-align: center;
-	background-color: green;
-
+	/*background-color: green;*/
 }
 
 #sidebar ul {
@@ -53,14 +54,19 @@ body {
 
 #content {
 	/*width: fill;*/
-	width: 80%;
+/*	width: 80%;*/
 	float: left;
 	/*margin: auto;*/
 	/*margin: 5px;*/
 
-	background-color: red;
+	/*background-color: red;*/
 }
 
 #sidebar,#content {
-	min-height: 800px;
+	margin-top: 10px;
+}
+
+.nav-item {
+	display: block;
+	width: 100%;
 }
