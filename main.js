@@ -2,19 +2,19 @@ var pane = {
 	links: [
 		{
 			"title": "Home",
-			"href": "/home"
+			"href": "home"
 		},
 		{
 			"title": "About Me",
-			"href": "/about-me"
+			"href": "about-me"
 		},
 		{
 			"title": "About This Site",
-			"href": "/about-this-site"
+			"href": "about-this-site"
 		},
 		{
 			"title": "Posts",
-			"href": "/posts"
+			"href": "posts"
 		}
 	],
 	message: "This is a vue application!!!",
@@ -30,58 +30,31 @@ var sb = new Vue({
   el: '#sidebar',
   data: pane,
   methods: {
-  	routeHome: function() {
-  		console.log("hiya")
-  		page("/home")
+  	route: function(hash) {
+  		routie(hash)
   	}
   }
 })
 
 
-// axios.get("/posts/postMarkdown.md")
-//   .then(function (response) {
-//     // handle success
-//     console.log(response);
-//     pane.content = marked(response.data, { sanitize: true });
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log(error);
-//   })
-//   .then(function () {
-//     // always executed
-//     console.log("always");
-//   });
-
-
-homeContent = function() {
-	axios.get("/posts/postOne.md")
-	  .then(function (response) {
-	    pane.content = marked(response.data, { sanitize: false });
-	    console.log(response)
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  })
-	  .then(function () {
-	    console.log("always");
-	  });
+function loadPostFactory(url) {
+	return function() {
+		axios.get("/posts/" + url + ".md")
+		  .then(function (response) {
+		    pane.content = marked(response.data, { sanitize: true });
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+	}
 }
 
-aboutContent = function() {
-	axios.get("/posts/postMarkdown.md")
-	  .then(function (response) {
-	    pane.content = marked(response.data, { sanitize: true });
-	    console.log(response)
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  })
-	  .then(function () {
-	    console.log("always");
-	  });
-}
+pane.links.forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
+
+routie({'': loadPostFactory('home')})
 
 
-page('/home', homeContent)
-page()
+// routie({
+// 	'home': homeContent,
+// 	'about': aboutContent
+// })

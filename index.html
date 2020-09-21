@@ -9,7 +9,7 @@
 
   <script src="vue.js"></script>
 
-  <script src="https://unpkg.com/page/page.js"></script>
+  <script src="routie.js"></script>
   <script src="https://unpkg.com/marked@0.3.6"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -27,7 +27,7 @@
 		<ul>
 			<li v-for="link in links">
 
-				<button v-on:click="routeHome">{{ link.title }}</button>
+				<button v-on:click="route(link.href)">{{ link.title }}</button>
 
 				 <!-- <a v-bind:href="link.href">{{ link.title }}</a>  -->
 				
