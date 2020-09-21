@@ -1,1 +1,50 @@
-hello world
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="vue.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"> -->
+<!--   <link href="https://cdn.jsdelivr.net/gh/tretapey/raisincss@1.1.0/raisin.min.css" rel="stylesheet"/> -->
+  <!-- <link rel="stylesheet" href="relax.css"> -->
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+	<div id="header" class="">
+		<h2>Patrick Thomison's Blog</h2>
+		<!-- <p>Distributed systems, containerization, and happy servers</p> -->
+	</div>
+
+	<div id="sidebar">
+		<ul>
+			<li v-for="link in links">
+				{{ link.title }}
+			</li>
+		</ul>
+	</div>
+
+	<div id="content">
+		
+		<div id="app">
+		  <p>{{ message }}</p>
+		  <p>{{ latest }}</p>
+		</div>
+		
+
+	</div>
+
+</body>
+
+<script src="main.js"></script>
+
+</html>

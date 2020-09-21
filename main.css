@@ -1,0 +1,63 @@
+p {
+	color: blue;
+}
+
+h1 {
+	color: purple;
+}
+
+body {
+	max-width: 1200px;
+	margin: auto;
+}
+
+#header {
+	height: 50px;
+	background-color: black;
+	color: white;
+}
+
+#header h2 {
+	/*border: 0;*/
+	padding: 10px;
+	/*margin: 0;*/
+
+	color: white;
+}
+
+#sidebar {
+	width: 20%;
+	/*margin: auto;*/
+	float: right;
+	text-align: center;
+	/*padding-top: 50px;*/
+	/*margin-left: 0;*/
+	/*margin-right: 0;*/
+	/*padding: 5px;*/
+	/*margin: 2px;*/
+}
+
+#sidebar ul {
+	padding: 0;
+}
+
+
+#sidebar li {
+	display: block;
+	list-style-type: none;
+	/*padding-left: 0;*/
+	padding: 5px;
+
+	/*width: 100%;*/
+
+}
+
+#content {
+	/*width: fill;*/
+	width: 80%;
+	float: left;
+	/*margin: auto;*/
+	/*margin: 5px;*/
+
+	background-color: red;
+}
