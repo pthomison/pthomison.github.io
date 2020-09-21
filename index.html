@@ -12,33 +12,36 @@
 <!--   <link href="https://cdn.jsdelivr.net/gh/tretapey/raisincss@1.1.0/raisin.min.css" rel="stylesheet"/> -->
   <!-- <link rel="stylesheet" href="relax.css"> -->
 
+  <script src="https://unpkg.com/page/page.js"></script>
+  <script src="https://unpkg.com/marked@0.3.6"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
 
 </head>
 
 <body>
 
 	<div id="header" class="">
-		<h2>Patrick Thomison's Blog</h2>
-		<!-- <p>Distributed systems, containerization, and happy servers</p> -->
+		<h2>Patrick Thomison's Blog: Distributed systems, containerization, and happy servers</h2>
+		<!--  -->
 	</div>
 
 	<div id="sidebar">
 		<ul>
 			<li v-for="link in links">
-				{{ link.title }}
+
+				<button v-on:click="routeHome">{{ link.title }}</button>
+
+				 <!-- <a v-bind:href="link.href">{{ link.title }}</a>  -->
+				
 			</li>
 		</ul>
 	</div>
 
-	<div id="content">
+	<div id="content" v-html="content">
 		
-		<div id="app">
-		  <p>{{ message }}</p>
-		  <p>{{ latest }}</p>
-		</div>
+		<!-- <div  id="latest"></div> -->
 		
 
 	</div>

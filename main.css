@@ -9,6 +9,7 @@ h1 {
 body {
 	max-width: 1200px;
 	margin: auto;
+	height: 100%;
 }
 
 #header {
@@ -30,6 +31,7 @@ body {
 	/*margin: auto;*/
 	float: right;
 	text-align: center;
+	background-color: green;
 	/*padding-top: 50px;*/
 	/*margin-left: 0;*/
 	/*margin-right: 0;*/
@@ -60,4 +62,8 @@ body {
 	/*margin: 5px;*/
 
 	background-color: red;
+}
+
+#sidebar,#content {
+	min-height: 800px;
 }

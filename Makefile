@@ -1,2 +1,5 @@
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+
 serve:
-	python3 -m http.server 8080
+	sudo docker run -it --rm -p 8080:80 -v "$(PWD):/data/html" -v "$(PWD)/nginx.conf:/etc/nginx/nginx.conf" nginx:latest
