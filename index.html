@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
 
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Sup Yall</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,16 +30,20 @@
 
 	<nav id="sidebar" class="col-3 nav flex-column">
 		<ul class="nav nav-pills">
-			<li v-for="link in links" class="nav-item">
-
-				 <a v-on:click="route(link.href)" v-bind:class="{ active: link.active }"class="nav-link">{{ link.title }}</a> 
-				
+			<li class="nav-item">
+				<a v-on:click="route('posts')" v-bind:class="{ active: links['posts'].active }" class="nav-link">Posts</a> 
+			</li>
+			<li class="nav-item">
+				<a v-on:click="route('about-me')" v-bind:class="{ active: links['about-me'].active }" class="nav-link">About Me</a> 
+			</li>
+			<li class="nav-item">
+				<a v-on:click="route('about-this-site')" v-bind:class="{ active: links['about-this-site'].active }" class="nav-link">About This Site</a> 
 			</li>
 		</ul>
 	</nav>
 
-	<div id="content" v-html="content" class="col-9">		
-
+	<div id="content" v-html="content" class="col-9">
+	<postings v-bind="posts"></postings>
 	</div>
 
 </body>

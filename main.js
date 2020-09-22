@@ -1,10 +1,5 @@
 var pane = {
 	links: {
-		"home": {
-			"title": "Home",
-			"href": "home",
-			"active": false
-		},
 		"about-me": {
 			"title": "About Me",
 			"href": "about-me",
@@ -18,11 +13,31 @@ var pane = {
 		"posts": {
 			"title": "Posts",
 			"href": "posts",
-			"active": false
+			"active": true
 		}
 	},
+	posts:[],
 	content: ""
 }
+
+const postListing = `<table class="table">
+  <tbody>
+    <tr v-for="post in posts">
+      <th scope="row">{{ post.date }}</th>
+      <td>{{ post.title }}</td>
+    </tr>
+  </tbody>
+</table>
+`
+
+Vue.component('postings', {
+	props: ['posts'],
+	template: postListing,
+	created: function () {
+		console.log("sup adsfklj;")
+		console.log(this)		
+	}
+})
 
 var app = new Vue({
   el: '#content',
@@ -36,11 +51,22 @@ var sb = new Vue({
   	route: function(hash) {
   		routie(hash)
   	}
-  }
+  },
+  created: function () {
+		axios.get("/posts/post-manifest.json")
+		  .then(function (response) {
+		  	console.log(response)
+		  	pane.posts = response.data
+		  	console.log(pane)
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+	}
 })
 
 
-function loadPostFactory(url) {
+function loadMarkdownFactory(url) {
 	return function() {
 		axios.get("/posts/" + url + ".md")
 		  .then(function (response) {
@@ -54,6 +80,13 @@ function loadPostFactory(url) {
 	}
 }
 
-Object.values(pane.links).forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
 
-routie({'': loadPostFactory('home')})
+function loadPosts() {
+	pane.content = postListing;
+}
+// Object.values(pane.links).forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
+
+routie({'about-me': loadMarkdownFactory('about-me')})
+routie({'about-this-site': loadMarkdownFactory('about-this-site')})
+routie({'posts': loadPosts})
+
