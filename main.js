@@ -46,6 +46,11 @@ routie('posts/:pageNumber', function(pageNumber) {
     changeActivePage("posts");
 });
 
+routie('', function() {
+    routie("posts/1")
+});
+
+
 function changeActivePage(page) {
 	Object.values(pane.pages).forEach(l => l.active = false)
 	pane.pages[page].active = true
