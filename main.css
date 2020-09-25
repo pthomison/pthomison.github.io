@@ -12,6 +12,8 @@ body {
 	height: 100vh;
 }
 
+
+
 #header {
 	min-height: 50px;
 	background-color: black;
@@ -20,7 +22,7 @@ body {
 	padding: 10px;
 }
 
-#header h2,h4 {
+#header>h2,#header>h4 {
 	padding: 5px;
 
 	color: white;
@@ -69,4 +71,19 @@ body {
 .nav-item {
 	display: block;
 	width: 100%;
+}
+h1,h2,h3,h4,h5,h6 {
+	color: black;
+}
+
+#pager>h4 {
+	display: inline;
+}
+
+.selected {
+	color: orange;
+}
+
+.pagination {
+	margin: auto;
 }

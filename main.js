@@ -1,63 +1,108 @@
 var pane = {
-	links: {
+	pages: {
 		"about-me": {
 			"title": "About Me",
 			"href": "about-me",
-			"active": false
+			"active": false,
+			"content": ""
 		},
 		"about-this-site": {
 			"title": "About This Site",
 			"href": "about-this-site",
-			"active": false
+			"active": false,
+			"content": ""
 		},
 		"posts": {
 			"title": "Posts",
-			"href": "posts",
+			"href": "posts/1",
 			"active": true
 		}
 	},
 	posts:[],
-	content: ""
+	page: 1,
+	totalPages: 0,
+	tab: "posts"
 }
 
-const postListing = `<table class="table">
+const postListing = `
+<table class="table">
   <tbody>
-    <tr v-for="post in posts">
-      <th scope="row">{{ post.date }}</th>
-      <td>{{ post.title }}</td>
+    <tr>
+      <th scope="row">{{ date }}</th>
+      <td>{{ title }}</td>
+    </tr>
+    <tr>
+      <div v-html="content"></div>
     </tr>
   </tbody>
 </table>
 `
 
-Vue.component('postings', {
-	props: ['posts'],
-	template: postListing,
-	created: function () {
-		console.log("sup adsfklj;")
-		console.log(this)		
-	}
+Vue.component('post', {
+	props: ['title', 'date', 'content', 'page'],
+	template: postListing
 })
 
 var app = new Vue({
-  el: '#content',
-  data: pane
-})
-
-var sb = new Vue({
-  el: '#sidebar',
+  el: '#app',
   data: pane,
   methods: {
   	route: function(hash) {
   		routie(hash)
+  	},
+  	pageDown: function() {
+  		if (pane.page > 1) {
+  			pane.page--;
+
+  			pageHash = "/posts/" + pane.page;
+
+  			console.log(pageHash)
+
+  			routie("about-me");
+  			console.log("hi")
+  		}
+  	},
+  	pageUp: function() {
+  		if (pane.page < pane.totalPages) {
+  			pane.page++;
+  		}
   	}
   },
   created: function () {
 		axios.get("/posts/post-manifest.json")
 		  .then(function (response) {
-		  	console.log(response)
-		  	pane.posts = response.data
-		  	console.log(pane)
+
+		  	p = response.data
+
+		  	p.forEach((post) => {
+		  		post.content = "";
+		  	})
+
+		  	// I'm aware this is ugly code, TODO: fix
+		  	y = 1;
+			for (i = 0; i < p.length; i+=3) {
+				p[i].page = y;
+				y++;
+			}
+
+		  	y = 1;
+			for (i = 1; i < p.length; i+=3) {
+				p[i].page = y;
+				y++;
+			} 
+
+		  	y = 1;
+			for (i = 2; i < p.length; i+=3) {
+				p[i].page = y;
+				y++;
+			} 
+
+			pane.totalPages = (p.length-(p.length%3))/3 + 1
+
+
+		  	loadPostContent(p);
+
+		  	pane.posts = p
 		  })
 		  .catch(function (error) {
 		    console.log(error);
@@ -65,28 +110,63 @@ var sb = new Vue({
 	}
 })
 
+// function loadMarkdownFactory(url) {
+// 	return function() {
+// 		axios.get("/posts/" + url + ".md")
+// 		  .then(function (response) {
+// 		  	changeActivePage(url)
+// 		    pane.content = marked(response.data, { sanitize: true });
+// 		  })
+// 		  .catch(function (error) {
+// 		    console.log(error);
+// 		  });
+// 	}
+// }
 
-function loadMarkdownFactory(url) {
-	return function() {
-		axios.get("/posts/" + url + ".md")
+
+function loadPostContent(posts) {
+	posts.forEach((post) => {
+		axios.get(post.link)
 		  .then(function (response) {
-		  	Object.values(pane.links).forEach(l => l.active = false)
-		  	pane.links[url].active = true
-		    pane.content = marked(response.data, { sanitize: true });
+		  	post.content = marked(response.data, { sanitize: true });
+		  	console.log(posts)
 		  })
 		  .catch(function (error) {
 		    console.log(error);
 		  });
-	}
-}
-
-
-function loadPosts() {
-	pane.content = postListing;
+	})
 }
 // Object.values(pane.links).forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
 
-routie({'about-me': loadMarkdownFactory('about-me')})
-routie({'about-this-site': loadMarkdownFactory('about-this-site')})
-routie({'posts': loadPosts})
+routie('about-me', function() {
+	axios.get("/posts/about-me.md")
+	  .then(function (response) {
+	  	pane.pages["about-me"].content = marked(response.data, { sanitize: true });
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+	changeActivePage("about-me");	
+});
 
+routie('about-this-site', function() {
+	axios.get("/posts/about-this-site.md")
+	  .then(function (response) {
+	  	pane.pages["about-this-site"].content = marked(response.data, { sanitize: true });
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+	changeActivePage("about-this-site");	
+});
+
+routie('posts/:pageNumber', function(pageNumber) {
+    console.log(pageNumber);
+    pane.page = pageNumber;
+    changeActivePage("posts");
+});
+
+function changeActivePage(page) {
+	Object.values(pane.pages).forEach(l => l.active = false)
+	pane.pages[page].active = true
+}

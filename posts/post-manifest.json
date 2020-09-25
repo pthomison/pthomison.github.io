@@ -2,12 +2,50 @@
 	{
 		"date": "2020-09-21",
 		"title": "Article 2",
-		"link": "/posts/article2"
+		"link": "/posts/article2.md",
+		"content": ""
 	},
 	{
 		"date": "2020-09-18",
+		"title": "Article 1",
+		"link": "/posts/article1.md",
+		"content": ""
+	},
+	{
+		"date": "2020-09-21",
 		"title": "Article 3",
-		"link": "/posts/article1"
+		"link": "/posts/article3.md",
+		"content": ""
+	},
+	{
+		"date": "2020-09-18",
+		"title": "Article 4",
+		"link": "/posts/article4.md",
+		"content": ""
+	},
+	{
+		"date": "2020-09-21",
+		"title": "Article 5",
+		"link": "/posts/article5.md",
+		"content": ""
+	},
+	{
+		"date": "2020-09-18",
+		"title": "Article 6",
+		"link": "/posts/article6.md",
+		"content": ""
+	},
+	{
+		"date": "2020-09-21",
+		"title": "Article 7",
+		"link": "/posts/article7.md",
+		"content": ""
+	},
+	{
+		"date": "2020-09-18",
+		"title": "Article 8",
+		"link": "/posts/article8.md",
+		"content": ""
 	}
 ]
 

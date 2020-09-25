@@ -23,28 +23,57 @@
 </head>
 
 <body>
+	<div id="app">
 
-	<div id="header" class="">
-		<h2>Patrick Thomison's Blog:</h2><h4>Distributed systems, containerization, and happy servers</h4>
-	</div>
+		<div id="header" class="">
+			<h2>Patrick Thomison's Blog:</h2><h4>Distributed systems, containerization, and happy servers</h4>
+		</div>
 
-	<nav id="sidebar" class="col-3 nav flex-column">
-		<ul class="nav nav-pills">
-			<li class="nav-item">
-				<a v-on:click="route('posts')" v-bind:class="{ active: links['posts'].active }" class="nav-link">Posts</a> 
-			</li>
-			<li class="nav-item">
-				<a v-on:click="route('about-me')" v-bind:class="{ active: links['about-me'].active }" class="nav-link">About Me</a> 
-			</li>
-			<li class="nav-item">
-				<a v-on:click="route('about-this-site')" v-bind:class="{ active: links['about-this-site'].active }" class="nav-link">About This Site</a> 
-			</li>
-		</ul>
-	</nav>
+		<nav id="sidebar" class="col-3 nav flex-column">
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+					<a v-on:click="route('posts/1')" v-bind:class="{ active: pages['posts'].active }" class="nav-link page-link">Posts</a> 
+				</li>
+				<li class="nav-item">
+					<a v-on:click="route('about-me')" v-bind:class="{ active: pages['about-me'].active }" class="nav-link page-link">About Me</a> 
+				</li>
+				<li class="nav-item">
+					<a v-on:click="route('about-this-site')" v-bind:class="{ active: pages['about-this-site'].active }" class="nav-link page-link">About This Site</a> 
+				</li>
+			</ul>
+		</nav>
 
-	<div id="content" v-html="content" class="col-9">
-	<postings v-bind="posts"></postings>
-	</div>
+		<div id="blog" v-if="pages['posts'].active" class="col-9">
+			<post
+			  v-for="post in posts"
+			  v-bind:key="post.title"
+			  v-bind:title="post.title"
+			  v-bind:date="post.date"
+			  v-bind:content="post.content"
+			  v-bind:page="post.page"
+			  v-if="post.page == page"
+			></post>
+
+			<nav class="pager">
+			  <ul class="pagination justify-content-center">
+			    <li class="page-item" v-on:click="pageDown()"><a class="page-link" href="#">Previous</a></li>
+			    <li class="page-item" v-for="n in totalPages" v-bind:class="{ active: page == n }" v-on:click="page=n"><a class="page-link" href="#">{{n}}</a></li>
+			    <li class="page-item" v-on:click="pageUp()"><a class="page-link" href="#">Next</a></li>
+			  </ul>
+			</nav>
+
+		</div>		
+
+		<div id="aboutMe" v-if="pages['about-me'].active" class="col-9">
+			<div v-html="pages['about-me'].content"></div>
+		</div>
+
+		<div id="aboutThisSite" v-if="pages['about-this-site'].active" class="col-9">
+			<div v-html="pages['about-this-site'].content"></div>
+		</div>
+
+
+	</div>	
 
 </body>
 
