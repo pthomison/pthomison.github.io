@@ -1,27 +1,54 @@
+
+
 var pane = {
 	pages: {
 		"about-me": {
-			"title": "About Me",
-			"href": "about-me",
 			"active": false,
 			"content": ""
 		},
 		"about-this-site": {
-			"title": "About This Site",
-			"href": "about-this-site",
 			"active": false,
 			"content": ""
 		},
 		"posts": {
-			"title": "Posts",
-			"href": "posts/1",
 			"active": true
 		}
 	},
 	posts:[],
 	page: 1,
 	totalPages: 0,
-	tab: "posts"
+}
+
+routie('about-me', function() {
+	axios.get("/posts/about-me.md")
+	  .then(function (response) {
+	  	pane.pages["about-me"].content = marked(response.data, { sanitize: true });
+	  	changeActivePage("about-me");
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+});
+
+routie('about-this-site', function() {
+	axios.get("/posts/about-this-site.md")
+	  .then(function (response) {
+	  	pane.pages["about-this-site"].content = marked(response.data, { sanitize: true });
+	  	changeActivePage("about-this-site");	
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+});
+
+routie('posts/:pageNumber', function(pageNumber) {
+    pane.page = pageNumber;
+    changeActivePage("posts");
+});
+
+function changeActivePage(page) {
+	Object.values(pane.pages).forEach(l => l.active = false)
+	pane.pages[page].active = true
 }
 
 const postListing = `
@@ -48,23 +75,16 @@ var app = new Vue({
   data: pane,
   methods: {
   	route: function(hash) {
-  		routie(hash)
+  		routie(hash);
   	},
   	pageDown: function() {
   		if (pane.page > 1) {
-  			pane.page--;
-
-  			pageHash = "/posts/" + pane.page;
-
-  			console.log(pageHash)
-
-  			routie("about-me");
-  			console.log("hi")
+  			routie("posts/" + (parseInt(pane.page)-1));
   		}
   	},
   	pageUp: function() {
   		if (pane.page < pane.totalPages) {
-  			pane.page++;
+  			routie("posts/" + (parseInt(pane.page)+1));
   		}
   	}
   },
@@ -110,19 +130,6 @@ var app = new Vue({
 	}
 })
 
-// function loadMarkdownFactory(url) {
-// 	return function() {
-// 		axios.get("/posts/" + url + ".md")
-// 		  .then(function (response) {
-// 		  	changeActivePage(url)
-// 		    pane.content = marked(response.data, { sanitize: true });
-// 		  })
-// 		  .catch(function (error) {
-// 		    console.log(error);
-// 		  });
-// 	}
-// }
-
 
 function loadPostContent(posts) {
 	posts.forEach((post) => {
@@ -135,38 +142,4 @@ function loadPostContent(posts) {
 		    console.log(error);
 		  });
 	})
-}
-// Object.values(pane.links).forEach(l => routie({[l.href]: loadPostFactory(l.href)}))
-
-routie('about-me', function() {
-	axios.get("/posts/about-me.md")
-	  .then(function (response) {
-	  	pane.pages["about-me"].content = marked(response.data, { sanitize: true });
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  });
-	changeActivePage("about-me");	
-});
-
-routie('about-this-site', function() {
-	axios.get("/posts/about-this-site.md")
-	  .then(function (response) {
-	  	pane.pages["about-this-site"].content = marked(response.data, { sanitize: true });
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  });
-	changeActivePage("about-this-site");	
-});
-
-routie('posts/:pageNumber', function(pageNumber) {
-    console.log(pageNumber);
-    pane.page = pageNumber;
-    changeActivePage("posts");
-});
-
-function changeActivePage(page) {
-	Object.values(pane.pages).forEach(l => l.active = false)
-	pane.pages[page].active = true
 }
