@@ -1,0 +1,83 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+	max-width: 1200px;
+	margin: auto;
+	height: 100vh;
+}
+
+
+
+#header {
+	min-height: 50px;
+	background-color: black;
+	color: white;
+
+	padding: 10px;
+}
+
+#header>h2,#header>h4 {
+	padding: 5px;
+
+	color: white;
+
+	display: inline-block;
+}
+
+#sidebar {
+/*	width: 20%;
+	min-width: 50px;*/
+	/*margin: auto;*/
+	float: right;
+	text-align: center;
+	/*background-color: green;*/
+}
+
+#sidebar ul {
+	padding: 0;
+}
+
+
+#sidebar li {
+	display: block;
+	list-style-type: none;
+	/*padding-left: 0;*/
+	padding: 5px;
+
+	/*width: 100%;*/
+
+}
+
+#content {
+	/*width: fill;*/
+/*	width: 80%;*/
+	float: left;
+	/*margin: auto;*/
+	/*margin: 5px;*/
+
+	/*background-color: red;*/
+}
+
+#sidebar,#content {
+	margin-top: 10px;
+}
+
+.nav-item {
+	display: block;
+	width: 100%;
+}
+h1,h2,h3,h4,h5,h6 {
+	color: black;
+}
+
+#pager>h4 {
+	display: inline;
+}
+
+.selected {
+	color: orange;
+}
+
+.pagination {
+	margin: auto;
+}
