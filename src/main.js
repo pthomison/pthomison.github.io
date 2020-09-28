@@ -29,6 +29,7 @@ var app = new Vue({
   	}
   },
   created: function () {
+  		createRoutes()
 		let p = pane.postManifest;
 
 		p.forEach((post) => {
