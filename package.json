@@ -31,11 +31,11 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.2",
     "dompurify": "^2.1.1",
     "jquery": "^3.5.1",
-    "marked": "^1.1.1",
+    "marked": "^3",
     "popper.js": "^1.16.1",
     "vue": "^2.6.12"
   }

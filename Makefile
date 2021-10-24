@@ -35,6 +35,14 @@ node_modules: .image
 	webpack:latest \
 	npm install
 
+shell: .image
+	docker run \
+	-it --rm \
+	-v $(PWD):/hacking \
+	-w /hacking \
+	webpack:latest \
+	/bin/bash
+
 clean:
 	rm -rf ./node_modules/ || true
 	docker rmi webpack || true
