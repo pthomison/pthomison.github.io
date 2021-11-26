@@ -4,8 +4,14 @@
 
 Deployed Page: [https://pthomison.github.io](https://pthomison.github.io)
 
-Build Dependencies:
+Build Machine Dependencies:
 - docker
+
+Build Dependencies:
+- [Webpack](https://webpack.js.org/)
+- [Vue.js](https://vuejs.org/)
+- [routie](https://projects.jga.me/routie/) 
+- [axios](https://axios-http.com/)
 
 Build:
 ```
