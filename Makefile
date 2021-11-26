@@ -2,7 +2,13 @@ mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 serve: docker_pack
-	docker run -it --rm -p 8080:80 -v "$(PWD):/data/html" -v "$(PWD)/nginx.conf:/etc/nginx/nginx.conf" nginx:latest
+	docker run \
+	-it --rm \
+	-p 8080:8080 \
+	-v $(PWD):/hacking \
+	-w /hacking \
+	webpack:latest \
+	npx webpack serve --static-serve-index --static-directory /hacking
 
 .image:
 	docker build . -t webpack -f webpack.dockerfile
@@ -49,6 +55,7 @@ shell: .image
 	-it --rm \
 	-v $(PWD):/hacking \
 	-w /hacking \
+	-p 8080:8080 \
 	webpack:latest \
 	/bin/bash
 

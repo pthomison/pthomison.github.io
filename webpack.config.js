@@ -29,8 +29,8 @@ var loadingRules = [{
 module.exports = {
 	entry: './src/index.js',
 	output: {
-		filename: 'main.js',
-		path: path.resolve(__dirname),
+		filename: '[name].bundle.js',
+		path: path.resolve(__dirname) + "/dist/",
 	},
 	// mode: 'development',
 	mode: 'production',
@@ -38,5 +38,10 @@ module.exports = {
 	module: {
 		rules: loadingRules
 	},
+	// optimization: {
+	// 	splitChunks: {
+	// 		chunks: 'all',
+	// 	},
+	// },
 };
 

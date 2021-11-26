@@ -7,7 +7,8 @@ body {
 }
 
 hr {
-	border-top: 3px solid white;
+	border-top: 3px solid blue;
+	margin-top: 12px;
 }
 
 #header {
@@ -18,7 +19,7 @@ hr {
 	padding: 10px;
 }
 
-#header>h2,#header>h4,#header>h6 {
+#header h2,#header h4,#header h6 {
 	padding: 0;
 	margin: 0;
 
@@ -27,60 +28,12 @@ hr {
 	// display: inline-block;
 }
 
-#sidebar {
-/*	width: 20%;
-	min-width: 50px;*/
-	/*margin: auto;*/
-	float: right;
-	text-align: center;
-	/*background-color: green;*/
-}
-
-#sidebar ul {
-	padding: 0;
-}
-
-
-#sidebar li {
-	display: block;
-	list-style-type: none;
-	/*padding-left: 0;*/
-	padding: 5px;
-
-	/*width: 100%;*/
-
-}
-
-#content {
-	/*width: fill;*/
-/*	width: 80%;*/
-	float: left;
-	/*margin: auto;*/
-	/*margin: 5px;*/
-
-	/*background-color: red;*/
-}
-
-#sidebar,#content {
-	margin-top: 10px;
-}
-
-.nav-item {
-	display: block;
-	width: 100%;
-}
-h1,h2,h3,h4,h5,h6 {
-	color: black;
-}
-
-#pager>h4 {
+#header nav {
+	text-align: right;
 	display: inline;
 }
 
-.selected {
-	color: orange;
-}
-
-.pagination {
-	margin: auto;
+#header a {
+	display: inline;
+	color: blue;
 }
