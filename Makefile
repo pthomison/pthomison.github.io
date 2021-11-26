@@ -1,7 +1,7 @@
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
-serve: pack
+serve: docker_pack
 	docker run -it --rm -p 8080:80 -v "$(PWD):/data/html" -v "$(PWD)/nginx.conf:/etc/nginx/nginx.conf" nginx:latest
 
 .image:
@@ -11,28 +11,37 @@ serve: pack
 webpack-bash: .image
 	docker run -it --rm -v $(PWD):/hacking webpack:latest
 
-pack: .image node_modules
+docker_pack: .image docker_node_modules
 	docker run \
 	-it --rm \
 	-v $(PWD):/hacking \
 	-w /hacking \
 	webpack:latest \
+	make pack
+
+pack:
 	npx webpack
 
-lint: .image
+docker_lint: .image
 	docker run \
 	-it --rm \
 	-v $(PWD):/hacking \
 	-w /hacking \
 	webpack:latest \
+	make lint
+
+lint:
 	npx eslint ./src/
 
-node_modules: .image
+docker_node_modules: .image
 	docker run \
 	-it --rm \
 	-v $(PWD):/hacking \
 	-w /hacking \
 	webpack:latest \
+	make node_modules
+
+node_modules:
 	npm install
 
 shell: .image

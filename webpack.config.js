@@ -32,8 +32,8 @@ module.exports = {
 		filename: 'main.js',
 		path: path.resolve(__dirname),
 	},
-	mode: 'development',
-	// mode: 'production',
+	// mode: 'development',
+	mode: 'production',
 	resolve: { alias: { vue: 'vue/dist/vue.esm.js' } },
 	module: {
 		rules: loadingRules
