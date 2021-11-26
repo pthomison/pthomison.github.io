@@ -43,8 +43,14 @@ shell: .image
 	webpack:latest \
 	/bin/bash
 
+clean-all: clean clean-deps clean-images
+
 clean:
-	rm -rf ./node_modules/ || true
-	docker rmi webpack || true
 	rm -rf ./dist/ || true
+
+clean-deps:
+	rm -rf ./node_modules/ || true
+
+clean-images:
+	docker rmi webpack || true
 	rm ./.image || true

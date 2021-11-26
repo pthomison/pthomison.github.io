@@ -31,7 +31,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.4",
     "bootstrap": "^4.5.2",
     "dompurify": "^2.1.1",
     "jquery": "^3.5.1",
