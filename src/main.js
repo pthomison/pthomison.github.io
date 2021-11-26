@@ -1,7 +1,7 @@
 import routie from './routie.js';
 import Vue from 'vue';
 import { pane } from './data.js';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 
@@ -73,13 +73,13 @@ var app = new Vue({
 });
 
 function updatePage(pageName, pageContentLocation) {
-	axios.get(pageContentLocation)
-	  .then(function (response) {
-	  	pane.pages[pageName].content = response.data;
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  });
+	// axios.get(pageContentLocation)
+	//   .then(function (response) {
+	//   	pane.pages[pageName].content = response.data;
+	//   })
+	//   .catch(function (error) {
+	//     console.log(error);
+	//   });
 }
 
 function createRoutes() {
@@ -97,17 +97,17 @@ function createRoutes() {
 		changeActivePage("about-this-site");	
 	});
 
-	routie('posts/:pageNumber', function(pageNumber) {
-	    pane.pages["blog"].currentPage = pageNumber;
-	    changeActivePage("blog");
-	});
+	// routie('posts/:pageNumber', function(pageNumber) {
+	//     pane.pages["blog"].currentPage = pageNumber;
+	//     changeActivePage("blog");
+	// });
 
-	routie('post/:pageName', function(pageName) {
-	    // pane.pages.post.content = pageName;
-	    changeActivePage("post");
-	});
+	// routie('post/:pageName', function(pageName) {
+	//     // pane.pages.post.content = pageName;
+	//     changeActivePage("post");
+	// });
 
 	routie('', function() {
-	    routie("posts/1")
+	    routie("/")
 	});
 }

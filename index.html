@@ -3,66 +3,26 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Sup Yall</title>
+	<title>pthomison</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
-<body>
-	<div id="app">
+<body class="bg-dark">
+	<div id="app" class="h-100">
 
 		<div id="header" class="">
-			<h2>Patrick Thomison's Blog:</h2><h4>Distributed systems, containerization, and happy servers</h4>
+			<h4>Distributed systems, containerization, and happy servers</h4>
+			<hr/>
 		</div>
-
-		<nav id="sidebar" class="col-3 nav flex-column">
-			<ul class="nav nav-pills">
-				<li class="nav-item">
-					<a v-on:click="route('posts/1')" v-bind:class="{ active: pages['blog'].active }" class="nav-link page-link">Posts</a> 
-				</li>
-				<li class="nav-item">
-					<a v-on:click="route('about-me')" v-bind:class="{ active: pages['about-me'].active }" class="nav-link page-link">About Me</a> 
-				</li>
-				<li class="nav-item">
-					<a v-on:click="route('about-this-site')" v-bind:class="{ active: pages['about-this-site'].active }" class="nav-link page-link">About This Site</a> 
-				</li>
-			</ul>
-		</nav>
 
 		<div class="col-9">
-			<blog 
-				v-if="pages['blog'].active" 
-				v-bind:content="pages['blog']">
-			</blog>	
-
-			<post 
-				v-if="pages['post'].active" 
-				v-bind:date="pages['post'].date"  
-				v-bind:title="pages['post'].title"
-				v-bind:content="pages['post'].content">
-			</post>	
-
-
-			<markdown-content 
-				id="aboutMe" 
-				v-bind:raw-markdown="pages['about-me'].content" 
-				v-if="pages['about-me'].active">	
-			</markdown-content>
-
-			<markdown-content 
-				id="aboutThisSite" 
-				v-if="pages['about-this-site'].active"
-				v-bind:raw-markdown="pages['about-this-site'].content">
-			</markdown-content>
-
+			test
 		</div>
-
-
 	</div>	
 
 </body>
 
 <script src="./main.js"></script>
-
 </html>

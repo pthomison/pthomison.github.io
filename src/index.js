@@ -1,9 +1,8 @@
-
 import 'bootstrap';
 
-import './post.component.js';
-import './blog.component.js';
-import './markdown-content.component.js';
+// import './post.component.js';
+// import './blog.component.js';
+// import './markdown-content.component.js';
 
 import './main.scss';
 import './main.js';
