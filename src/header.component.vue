@@ -5,8 +5,8 @@
     <div class="row">
 
       <div class="col">
-        <h4>Patrick Thomison</h4>
-        <h6>Distributed systems, containerization, and happy servers</h6>
+        <p class="fs-5">PJT</p>
+        <p class="fs-6 fw-light">Distributed systems, containerization, and happy servers</p>
       </div>
 
       <div class="col">

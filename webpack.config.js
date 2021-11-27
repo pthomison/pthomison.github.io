@@ -61,7 +61,7 @@ module.exports = {
 		rules: loadingRules
 	},
   devServer: {
-    watchFiles: ['src/*.js', 'src/*.scss', 'index.html'],
+    watchFiles: ['src/*.js', 'src/*.scss', 'src/*.vue','index.html'],
   },
 	plugins: [
     new HtmlWebpackPlugin({
