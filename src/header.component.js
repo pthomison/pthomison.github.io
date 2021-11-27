@@ -11,10 +11,12 @@ const header = `
     </div>
 
     <div class="col">
-      <nav class="top-50">
-        <a href="#">about me</a>
-        <a href="#">about this site</a>
-        <a href="#">projects</a>
+      <nav class="navbar">
+        <a href="#" class="nav-link">about me</a>
+        <div class="vr"></div>
+        <a href="#" class="nav-link">about this site</a>
+        <div class="vr"></div>
+        <a href="#" class="nav-link">projects</a>
       </nav>
     </div>
 

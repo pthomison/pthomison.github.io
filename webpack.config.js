@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin");
 
 var loadingRules = [{
     test: /\.(scss)$/,
@@ -29,8 +31,9 @@ var loadingRules = [{
 module.exports = {
 	entry: './src/index.js',
 	output: {
-		filename: '[name].bundle.js',
-		path: path.resolve(__dirname) + "/dist/",
+    filename: '[name]-[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js',
+		path: path.resolve(__dirname) + "/docs/",
 	},
 	// mode: 'development',
 	mode: 'production',
@@ -38,10 +41,20 @@ module.exports = {
 	module: {
 		rules: loadingRules
 	},
-	// optimization: {
-	// 	splitChunks: {
-	// 		chunks: 'all',
-	// 	},
-	// },
+  devServer: {
+    watchFiles: ['src/*.js', 'src/*.scss', 'index.html'],
+  },
+	plugins: [
+    new HtmlWebpackPlugin({
+    	template: 'src/index.html'
+    }),
+  ],
+	optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+		splitChunks: {
+			chunks: 'all',
+		},
+	},
 };
 

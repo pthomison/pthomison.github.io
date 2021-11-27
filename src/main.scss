@@ -7,7 +7,7 @@ body {
 }
 
 hr {
-	border-top: 3px solid blue;
+	border-top: 3px solid white;
 	margin-top: 12px;
 }
 
@@ -35,5 +35,6 @@ hr {
 
 #header a {
 	display: inline;
-	color: blue;
+	color: white;
+	// text-decoration: none;
 }

@@ -1,14 +1,23 @@
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
-serve: docker_pack
+docker_serve:
 	docker run \
 	-it --rm \
 	-p 8080:8080 \
 	-v $(PWD):/hacking \
 	-w /hacking \
 	webpack:latest \
-	npx webpack serve --static-serve-index --static-directory /hacking
+	make serve
+
+serve:
+	npx webpack serve \
+		--compress \
+		--static-serve-index \
+		--static-directory /hacking \
+		--no-hot \
+		--no-client-overlay-warnings \
+		--client-progress
 
 .image:
 	docker build . -t webpack -f webpack.dockerfile
@@ -62,7 +71,7 @@ shell: .image
 clean-all: clean clean-deps clean-images
 
 clean:
-	rm -rf ./dist/ || true
+	rm -rf ./docs/ || true
 
 clean-deps:
 	rm -rf ./node_modules/ || true
