@@ -36,6 +36,7 @@ docker_pack: .image docker_node_modules
 
 pack:
 	npx webpack
+	unzip -u ./favicon_io.zip -d ./docs/favicons
 
 docker_lint: .image
 	docker run \
