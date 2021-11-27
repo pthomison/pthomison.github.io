@@ -14,7 +14,7 @@ serve:
 	npx webpack serve \
 		--compress \
 		--static-serve-index \
-		--static-directory /hacking \
+		--static-directory ./docs \
 		--no-hot \
 		--no-client-overlay-warnings \
 		--client-progress

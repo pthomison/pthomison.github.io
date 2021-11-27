@@ -1,29 +1,48 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require("terser-webpack-plugin");
+const { VueLoaderPlugin } = require('vue-loader')
 
-var loadingRules = [{
+var loadingRules = [
+	{
     test: /\.(scss)$/,
-    use: [{
-      loader: 'style-loader', // inject CSS to page
-    }, {
-      loader: 'css-loader', // translates CSS into CommonJS modules
-    }, {
-      loader: 'postcss-loader', // Run post css actions
-      options: {
-      	postcssOptions: {
-	        plugins: function () { // post css plugins, can be exported to postcss.config.js
-	          return [
-	            require('precss'),
-	            require('autoprefixer')
-	          ];
-	        }
-      	}
-      }
-    }, {
-      loader: 'sass-loader' // compiles Sass to CSS
-    }]
+    use: [
+	    {
+	      loader: 'style-loader', // inject CSS to page
+	    }, 
+	    {
+	      loader: 'css-loader', // translates CSS into CommonJS modules
+	    }, 
+	    {
+	      loader: 'postcss-loader', // Run post css actions
+	      options: {
+	      	postcssOptions: {
+		        plugins: function () { // post css plugins, can be exported to postcss.config.js
+		          return [
+		            require('precss'),
+		            require('autoprefixer')
+		          ];
+		        }
+	      	}
+	      }
+	    }, 
+	    {
+	      loader: 'sass-loader' // compiles Sass to CSS
+	    },
+    ]
   },
+  {
+    test: /\.vue$/,
+    loader: 'vue-loader'
+  },
+  {
+    test: /\.css$/,
+    use: [
+      'vue-style-loader',
+      'css-loader'
+    ]
+  }
+
 ]
 
 
@@ -37,7 +56,7 @@ module.exports = {
 	},
 	// mode: 'development',
 	mode: 'production',
-	resolve: { alias: { vue: 'vue/dist/vue.esm.js' } },
+	resolve: { alias: { vue: 'vue/dist/vue.esm-bundler.js' } },
 	module: {
 		rules: loadingRules
 	},
@@ -48,6 +67,7 @@ module.exports = {
     new HtmlWebpackPlugin({
     	template: 'src/index.html'
     }),
+    new VueLoaderPlugin(),
   ],
 	optimization: {
     minimize: true,
