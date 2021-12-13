@@ -17,9 +17,9 @@
 <body class="bg-dark">
 	<div id="app" class="h-100">
 
-		<header-component></header-component>
-
-		<about-me-component></about-me-component>
+		<header-component @change-page="print($event)"></header-component>
+		<about-me-component v-if="page == 'about-me'"></about-me-component>
+		<about-this-site-component v-if="page == 'about-this-site'"></about-this-site-component>
 
 	</div>
 </body>

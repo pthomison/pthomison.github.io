@@ -11,11 +11,11 @@
 
       <div class="col">
         <nav class="navbar">
-          <a href="#" class="nav-link">about me</a>
+          <a href="#"  class="nav-link" @click="$emit('changePage', 'about-me')">about me</a>
           <div class="vr"></div>
-          <a href="#" class="nav-link">about this site</a>
+          <a href="#" class="nav-link" @click="$emit('changePage', 'about-this-site')">about this site</a>
           <div class="vr"></div>
-          <a href="#" class="nav-link">projects</a>
+          <a href="#" class="nav-link" @click="$emit('changePage', 'projects')">projects</a>
         </nav>
       </div>
 

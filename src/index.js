@@ -1,8 +1,3 @@
 import 'bootstrap';
-
-// import './header.component.js';
-
+import './app.js';
 import './main.scss';
-import './main.js';
-
-// import './about-me.component.vue';
