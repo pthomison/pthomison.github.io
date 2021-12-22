@@ -13,7 +13,7 @@
         <nav class="navbar">
           <a href="#"  class="nav-link" @click="$emit('changePage', 'about-me')">about me</a>
           <div class="vr"></div>
-          <a href="#" class="nav-link" @click="$emit('changePage', 'about-this-site')">about this site</a>
+          <a href="https://github.com/pthomison/pthomison.github.io" class="nav-link">website source code</a>
           <div class="vr"></div>
           <a href="#" class="nav-link" @click="$emit('changePage', 'projects')">projects</a>
         </nav>

@@ -2,9 +2,25 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-      <p class="fs-4">Hi! I'm Patrick</p>
-      <p>I'm a devops engineer based in the PNW. I specialize in kubernetes based stacks, but I find myself whereever the interesting problems are. Interested in containers, the cloud, and tooling that makes lives easier (hopefully mine).</p>
+      <div class="row">
+        <p class="fs-4">Hi! I'm Patrick</p>
+      </div>
+
+      <div class="row">
+        <p>I'm a devops engineer based in the PNW. I specialize in kubernetes based stacks, but I find myself whereever the interesting problems are. Interested in containers, the cloud, and tooling that makes lives easier (hopefully mine).</p>
+      </div>
+
+      <nav class="navbar social-bar">
+          <a href="https://github.com/pthomison"  class="nav-link social-link">
+            <i class="fab fa-github"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/patrickthomison/" class="nav-link social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
+      </nav>
     </div>
+
     <div class="col-md-1"></div>
   </div>
 </template>
@@ -19,8 +35,17 @@ export default {
 }
 </script> -->
 
-<!-- <style>
+<style>
 p {
   color: white;
 }
-</style> -->
+.social-bar {
+  justify-content: flex-start;
+}
+
+.social-link {
+  font-size: 48px;
+  color: white !important;
+  display:  inline-block !important;
+}
+</style>
