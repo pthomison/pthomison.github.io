@@ -7,7 +7,7 @@
       </div>
 
       <div class="row">
-        <p>I'm a devops engineer based in the PNW. I specialize in kubernetes based stacks, but I find myself whereever the interesting problems are. Interested in containers, the cloud, and tooling that makes lives easier (hopefully mine).</p>
+        <p>I'm a devops engineer based in the PNW. I specialize in kubernetes based stacks, but I find myself wherever the interesting problems are. Interested in containers, the cloud, and tooling that makes lives easier (hopefully mine).</p>
       </div>
 
       <nav class="navbar social-bar">
