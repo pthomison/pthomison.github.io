@@ -22,6 +22,10 @@ p {
 	padding: 10px;
 }
 
+#about-me {
+	padding: 10px;
+}
+
 #header h1,#header h2,#header h3,#header h4,#header h5,#header h6, #header p {
 	padding: 0;
 	margin: 0;
@@ -36,4 +40,10 @@ p {
 #header a {
 	display: inline;
 	color: white;
+}
+
+.social-link {
+  font-size: 48px;
+  color: white !important;
+  display:  inline-block !important;
 }
