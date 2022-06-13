@@ -1,14 +1,9 @@
-mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+NPM_IMAGE=node:18.8.0
 
-docker_serve: .image
-	docker run \
-	-it --rm \
-	-p 8080:8080 \
-	-v $(PWD):/hacking \
-	-w /hacking \
-	webpack:latest \
-	make serve
+DOCKER_CMD=docker run -it --rm -v $(PWD):/hacking -p 8080:8080 -w /hacking $(NPM_IMAGE)
+
+docker_serve:
+	$(DOCKER_CMD) make serve
 
 serve:
 	npx webpack serve \
@@ -19,55 +14,24 @@ serve:
 		--no-client-overlay-warnings \
 		--client-progress
 
-.image:
-	docker build . -t webpack -f webpack.dockerfile
-	touch .image
-
-webpack-bash: .image
-	docker run -it --rm -v $(PWD):/hacking webpack:latest
-
-docker_pack: .image docker_node_modules
-	docker run \
-	-it --rm \
-	-v $(PWD):/hacking \
-	-w /hacking \
-	webpack:latest \
-	make pack
+docker_pack: node_modules
+	$(DOCKER_CMD) make pack
 
 pack:
 	npx webpack
 	unzip -u ./favicon_io.zip -d ./docs/favicon
 
-docker_lint: .image
-	docker run \
-	-it --rm \
-	-v $(PWD):/hacking \
-	-w /hacking \
-	webpack:latest \
-	make lint
+docker_lint:
+	$(DOCKER_CMD) make lint
 
 lint:
 	npx eslint ./src/
 
-docker_node_modules: .image
-	docker run \
-	-it --rm \
-	-v $(PWD):/hacking \
-	-w /hacking \
-	webpack:latest \
-	make node_modules
-
 node_modules:
-	npm install
+	$(DOCKER_CMD) npm install
 
-shell: .image
-	docker run \
-	-it --rm \
-	-v $(PWD):/hacking \
-	-w /hacking \
-	-p 8080:8080 \
-	webpack:latest \
-	/bin/bash
+shell:
+	$(DOCKER_CMD) /bin/bash
 
 clean-all: clean clean-deps clean-images
 
