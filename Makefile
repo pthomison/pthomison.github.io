@@ -1,7 +1,7 @@
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
-docker_serve:
+docker_serve: .image
 	docker run \
 	-it --rm \
 	-p 8080:8080 \

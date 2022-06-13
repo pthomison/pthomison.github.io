@@ -9,16 +9,6 @@
       <div class="row">
         <p>I'm a devops engineer based in the PNW. I specialize in kubernetes based stacks, but I find myself wherever the interesting problems are. Interested in containers, the cloud, and tooling that makes lives easier (hopefully mine).</p>
       </div>
-
-      <nav class="navbar social-bar">
-          <a href="https://github.com/pthomison"  class="nav-link social-link">
-            <i class="fab fa-github"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/in/patrickthomison/" class="nav-link social-link">
-            <i class="fab fa-linkedin"></i>
-          </a>
-      </nav>
     </div>
 
     <div class="col-md-1"></div>
