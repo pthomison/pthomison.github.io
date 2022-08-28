@@ -1,6 +1,6 @@
 import 'bootstrap';
 import './app.js';
-import './main.scss';
+import './index.scss';
 
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'

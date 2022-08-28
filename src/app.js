@@ -1,25 +1,24 @@
 import * as Vue from 'Vue';
+import * as VueRouter from 'vue-router';
 
 import HeaderComponent from './header.component.vue';
 import AboutMeComponent from './about-me.component.vue';
 
-const app = Vue.createApp({
-  data() {
-    return {
-      page: "about-me"
-    }
-  },
-  methods: {
-    print(x) {
-      console.log(x)
-    },
-    changePage(x) {
-      this.page = x
-    },
-  },
+const root = Vue.createApp({})
+
+const routes = [
+  { path: '/', component: AboutMeComponent },
+]
+
+root.component('header-component', HeaderComponent)
+
+const router = VueRouter.createRouter({
+  history: VueRouter.createWebHashHistory(),
+  routes: routes
 })
 
-app.component('header-component', HeaderComponent)
-app.component('about-me-component', AboutMeComponent)
+root.use(router)
+const vm = root.mount('#app')
 
-const vm = app.mount('#app')
+
+
