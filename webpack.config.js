@@ -17,9 +17,8 @@ var loadingRules = [
 	      loader: 'postcss-loader', // Run post css actions
 	      options: {
 	      	postcssOptions: {
-		        plugins: function () { // post css plugins, can be exported to postcss.config.js
+		        plugins: function () {
 		          return [
-		            require('precss'),
 		            require('autoprefixer')
 		          ];
 		        }

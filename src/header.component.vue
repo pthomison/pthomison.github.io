@@ -14,11 +14,11 @@
       <div class="col">
         <nav class="navbar">
           <a href="https://github.com/pthomison"  class="nav-link social-link">
-            <i class="fab fa-github"></i>
+            <font-awesome-icon icon="fa-brands fa-github" />
           </a>
           <div class="vr"></div>
           <a href="https://www.linkedin.com/in/patrickthomison/" class="nav-link social-link">
-            <i class="fab fa-linkedin"></i>
+            <font-awesome-icon icon="fa-brands fa-linkedin" />
           </a>
           <div class="vr"></div>
           <a href="https://github.com/pthomison/pthomison.github.io" class="nav-link">this website's <br> source code</a>
