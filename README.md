@@ -11,8 +11,7 @@ Build Dependencies:
 - [Webpack](https://webpack.js.org/)
 - [Vue.js](https://vuejs.org/)
 - [Bootstrap](https://getbootstrap.com/)
-- [routie](https://projects.jga.me/routie/) 
-- [axios](https://axios-http.com/)
+- [FontAwesome](https://fontawesome.com/)
 
 Build:
 ```
