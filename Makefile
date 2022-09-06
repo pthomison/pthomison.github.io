@@ -1,10 +1,3 @@
-NPM_IMAGE=node:18.8.0
-
-DOCKER_CMD=docker run -it --rm -v $(PWD):/hacking -p 8080:8080 -w /hacking $(NPM_IMAGE)
-
-docker_serve:
-	$(DOCKER_CMD) make serve
-
 serve: node_modules
 	npx webpack serve \
 		--compress \
@@ -14,24 +7,18 @@ serve: node_modules
 		--no-client-overlay-warnings \
 		--client-progress
 
-docker_pack: node_modules
-	$(DOCKER_CMD) make pack
-
-pack: node_modules
+build: node_modules
 	npx webpack
 	unzip -u ./favicon_io.zip -d ./docs/favicon
 
-docker_lint:
-	$(DOCKER_CMD) make lint
+serve-build:
+	cd docs && python3 -m http.server 8080
 
 lint: node_modules
 	npx eslint ./src/
 
 node_modules:
-	$(DOCKER_CMD) npm install
-
-shell:
-	$(DOCKER_CMD) /bin/bash
+	npm install
 
 clean-all: clean clean-deps
 
