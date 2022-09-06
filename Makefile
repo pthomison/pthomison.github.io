@@ -5,7 +5,7 @@ DOCKER_CMD=docker run -it --rm -v $(PWD):/hacking -p 8080:8080 -w /hacking $(NPM
 docker_serve:
 	$(DOCKER_CMD) make serve
 
-serve:
+serve: node_modules
 	npx webpack serve \
 		--compress \
 		--static-serve-index \
@@ -17,14 +17,14 @@ serve:
 docker_pack: node_modules
 	$(DOCKER_CMD) make pack
 
-pack:
+pack: node_modules
 	npx webpack
 	unzip -u ./favicon_io.zip -d ./docs/favicon
 
 docker_lint:
 	$(DOCKER_CMD) make lint
 
-lint:
+lint: node_modules
 	npx eslint ./src/
 
 node_modules:
@@ -33,14 +33,10 @@ node_modules:
 shell:
 	$(DOCKER_CMD) /bin/bash
 
-clean-all: clean clean-deps clean-images
+clean-all: clean clean-deps
 
 clean:
 	rm -rf ./docs/ || true
 
 clean-deps:
 	rm -rf ./node_modules/ || true
-
-clean-images:
-	docker rmi webpack || true
-	rm ./.image || true
