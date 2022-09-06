@@ -40,7 +40,11 @@ var loadingRules = [
       'vue-style-loader',
       'css-loader'
     ]
-  }
+  },
+	{
+	    test: /\.(jpe?g|png|gif|svg)$/i, 
+	    type: 'asset',
+	}
 
 ]
 

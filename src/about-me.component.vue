@@ -1,9 +1,35 @@
+<script>
+import ProfilePic from './profile.jpg';
+
+export default {
+  data() {
+
+    return {
+      ProfilePic: ProfilePic
+    }
+
+
+  },
+}
+
+</script>
+
+<style type="text/css">
+  
+#profile-picture {
+  border-radius: 8px;
+}
+
+</style>
+
+
 <template>
 
   <header-component></header-component>
 
   <div class="row" id="about-me">
-    <div class="col-md-10">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
       <div class="row">
         <p class="fs-4">Hi! I'm Patrick</p>
       </div>
@@ -13,8 +39,12 @@
       </div>
     </div>
 
-    <div class="col-md-2"></div>
+    
+
+    <div class="col-md-2"><img id="profile-picture" v-bind:src="ProfilePic" style="width: 200px"></div>
+    <div class="col-md-1"></div>
   </div>
 
 </template>
+
 
