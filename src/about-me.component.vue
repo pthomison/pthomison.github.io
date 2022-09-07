@@ -14,8 +14,11 @@ export default {
 
 </script>
 
-<style type="text/css">
-  
+<style lang="scss">
+
+@import './colors.scss';
+
+
 #profile-picture {
   border-radius: 8px;
 }
@@ -25,7 +28,7 @@ export default {
 }
 
 p {
-  color: white;
+  color: $text-color;
 }
 
 </style>

@@ -1,17 +1,19 @@
-<style type="text/css">
-  
+<style lang="scss">
+
+@import './colors.scss';
+
 #header {
   min-height: 50px;
-  color: white;
+  color: $text-color;
 
   padding: 10px;
 }
 
-#header h1,#header h2,#header h3,#header h4,#header h5,#header h6, #header p {
+#header p {
   padding: 0;
   margin: 0;
 
-  color: white;
+  color: $text-color;
 }
 
 #header nav {
@@ -20,12 +22,16 @@
 
 #header a {
   display: inline;
-  color: white;
+  color: $text-color;
+}
+
+.hover:hover {
+  color: $hover-color !important;
 }
 
 .social-link {
   font-size: 48px;
-  color: white !important;
+  color: $text-color !important;
   display:  inline-block !important;
 }
 
@@ -46,17 +52,17 @@
 
       <div class="col">
         <nav class="navbar">
-          <a href="https://github.com/pthomison"  class="nav-link social-link">
-            <font-awesome-icon icon="fa-brands fa-github" />
+          <a href="https://github.com/pthomison"  class="nav-link social-link hover">
+            <font-awesome-icon icon="fa-brands fa-github"/>
           </a>
           <div class="vr"></div>
-          <a href="https://www.linkedin.com/in/patrickthomison/" class="nav-link social-link">
+          <a href="https://www.linkedin.com/in/patrickthomison/" class="nav-link social-link hover">
             <font-awesome-icon icon="fa-brands fa-linkedin" />
           </a>
           <div class="vr"></div>
-          <a href="https://github.com/pthomison/pthomison.github.io" class="nav-link">this website's <br> source code</a>
+          <a href="https://github.com/pthomison/pthomison.github.io" class="nav-link hover">this website's <br> source code</a>
           <div class="vr"></div>
-          <a href="https://github.com/pthomison?tab=repositories" class="nav-link">my projects</a>
+          <a href="https://github.com/pthomison?tab=repositories" class="nav-link hover">my projects</a>
         </nav>
       </div>
 
