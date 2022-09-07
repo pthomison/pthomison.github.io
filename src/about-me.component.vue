@@ -20,6 +20,14 @@ export default {
   border-radius: 8px;
 }
 
+#about-me {
+  padding: 10px;
+}
+
+p {
+  color: white;
+}
+
 </style>
 
 
