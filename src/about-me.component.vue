@@ -1,16 +1,14 @@
 <script>
+
 import ProfilePic from './profile.jpg';
 
 export default {
   data() {
-
     return {
-      ProfilePic: ProfilePic
-    }
-
-
+      ProfilePic: ProfilePic,
+    };
   },
-}
+};
 
 </script>
 
