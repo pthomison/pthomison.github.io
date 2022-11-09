@@ -7,7 +7,7 @@ serve: node_modules
 		--no-client-overlay-warnings \
 		--client-progress
 
-build: node_modules
+build: clean node_modules
 	npx webpack
 	unzip -u ./favicon_io.zip -d ./docs/favicon
 
