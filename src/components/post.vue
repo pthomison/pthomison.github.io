@@ -23,12 +23,11 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
 
 <template>
 
 
-	<h1 v-html="PostMarkdown"></h1>
+	<div v-html="PostMarkdown"></div>
 
 </template>
