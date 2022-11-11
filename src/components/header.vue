@@ -1,19 +1,13 @@
 <style lang="scss">
 
-@import './colors.scss';
-
 #header {
   min-height: 50px;
-  color: $text-color;
-
   padding: 10px;
 }
 
 #header p {
   padding: 0;
   margin: 0;
-
-  color: $text-color;
 }
 
 #header nav {
@@ -22,16 +16,11 @@
 
 #header a {
   display: inline;
-  color: $text-color;
-}
-
-.hover:hover {
-  color: $hover-color !important;
+  text-decoration: none;
 }
 
 .social-link {
   font-size: 48px;
-  color: $text-color !important;
   display:  inline-block !important;
 }
 
@@ -45,7 +34,7 @@
 
       <div class="col d-flex align-items-center" id="header-title">
         <div>
-          <p class="fs-5">PJT</p>
+          <router-link to="/"><p class="fs-5 hover">PJT</p></router-link>
           <p class="fs-6 fw-light">Distributed systems, containerization, and happy servers</p>
         </div>
       </div>
@@ -60,9 +49,9 @@
             <font-awesome-icon icon="fa-brands fa-linkedin" />
           </a>
           <div class="vr"></div>
-          <a href="https://github.com/pthomison/pthomison.github.io" class="nav-link hover">this website's <br> source code</a>
+          <a href="https://github.com/pthomison?tab=repositories" class="nav-link hover">projects</a>
           <div class="vr"></div>
-          <a href="https://github.com/pthomison?tab=repositories" class="nav-link hover">my projects</a>
+          <a href="/#/posts" class="nav-link hover">posts</a>
         </nav>
       </div>
 

@@ -1,20 +1,21 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
+const RemarkHTML = require('remark-html');
 
 var loadingRules = [
 	{
     test: /\.(scss)$/,
     use: [
 	    {
-	      loader: 'style-loader', // inject CSS to page
+	      loader: 'style-loader',
 	    }, 
 	    {
-	      loader: 'css-loader', // translates CSS into CommonJS modules
+	      loader: 'css-loader',
 	    }, 
 	    {
-	      loader: 'postcss-loader', // Run post css actions
+	      loader: 'postcss-loader',
 	      options: {
 	      	postcssOptions: {
 		        plugins: function () {
@@ -26,7 +27,7 @@ var loadingRules = [
 	      }
 	    }, 
 	    {
-	      loader: 'sass-loader' // compiles Sass to CSS
+	      loader: 'sass-loader'
 	    },
     ]
   },
@@ -44,10 +45,26 @@ var loadingRules = [
 	{
 	    test: /\.(jpe?g|png|gif|svg)$/i, 
 	    type: 'asset',
-	}
+	},
+
+  {
+    test: /\.md$/,
+    use: [
+      {
+        loader: "html-loader",
+      },
+      {
+        loader: "remark-loader",
+        options: {
+          remarkOptions: {
+            plugins: [RemarkHTML],
+          },
+        },
+      },
+    ],
+  },
 
 ]
-
 
 
 module.exports = {
@@ -57,8 +74,8 @@ module.exports = {
     chunkFilename: '[name]-[chunkhash].js',
 		path: path.resolve(__dirname) + "/docs/",
 	},
-	// mode: 'development',
-	mode: 'production',
+	mode: 'development',
+	// mode: 'production',
 	resolve: { alias: { vue: 'vue/dist/vue.esm-bundler.js' } },
 	module: {
 		rules: loadingRules

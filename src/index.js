@@ -1,3 +1,3 @@
 import 'bootstrap';
 import './app.js';
-import './index.scss';
+import './styles/index.scss';

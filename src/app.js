@@ -1,8 +1,11 @@
 import { createApp } from 'Vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-import HeaderComponent from './header.component.vue';
-import AboutMeComponent from './about-me.component.vue';
+import HeaderComponent from './components/header.vue';
+import PostComponent from './components/post.vue';
+
+import AboutMePage from './pages/about-me.vue';
+import PostsPage from './pages/posts.vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -14,10 +17,12 @@ library.add(faLinkedin);
 const root = createApp({});
 
 const routes = [
-  { path: '/', component: AboutMeComponent },
+  { path: '/', component: AboutMePage },
+  { path: '/posts', component: PostsPage },
 ];
 
 root.component('header-component', HeaderComponent);
+root.component('post-component', PostComponent);
 root.component('font-awesome-icon', FontAwesomeIcon);
 
 const router = createRouter({

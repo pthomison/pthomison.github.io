@@ -1,6 +1,6 @@
 <script>
 
-import ProfilePic from './profile.jpg';
+import ProfilePic from '../static/profile.jpg';
 
 export default {
   data() {
@@ -14,19 +14,12 @@ export default {
 
 <style lang="scss">
 
-@import './colors.scss';
-
-
 #profile-picture {
   border-radius: 8px;
 }
 
 #about-me {
   padding: 10px;
-}
-
-p {
-  color: $text-color;
 }
 
 </style>
