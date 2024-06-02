@@ -1,0 +1,53 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  node_modules:
+    cmds:
+      - npm install
+
+  clean:
+    cmds:
+      - rm -rf ./docs/ || true
+
+  clean-deps:
+    cmds:
+      - rm -rf ./node_modules/ || true
+
+  clean-all:
+    cmds:
+      - task: clean
+      - task: clean-deps
+
+  serve:
+    cmds:
+      - task: node_modules
+      - >
+        npx webpack serve 
+        --compress 
+        --static-serve-index 
+        --static-directory ./docs 
+        --no-hot 
+        --no-client-overlay-warnings
+        --client-progress
+
+  build:
+    cmds:
+      - task: clean
+      - task: node_modules
+      - npx webpack
+      - unzip -u ./favicon_io.zip -d ./docs/favicon
+
+  serve-build:
+    dir: docs
+    cmds:
+      - python3 -m http.server 8080

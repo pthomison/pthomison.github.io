@@ -9,6 +9,7 @@ Build Machine Dependencies:
 - npm
 
 Build Dependencies:
+- [Task](https://taskfile.dev)
 - [Webpack](https://webpack.js.org/)
 - [Vue.js](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
@@ -18,30 +19,30 @@ Build Dependencies:
 
 Build:
 ```
-make clean build
+task clean build
 ```
 
 Build And Serve :
 ```
-make clean build serve-build
+task clean build serve-build
 ```
 
 Dev Server:
 ```
-make clean serve
+task clean serve
 ```
 
 Full Clean:
 ```
-make clean-all
+task clean-all
 ```
 or
 ```
 # clear builds
-make clean
+task clean
 
 # clear dependencies
-make clean-deps
+task clean-deps
 ```
 
 ### Misc Notes
